@@ -1,14 +1,17 @@
 import React from 'react';
 import { AppLoading } from 'expo';
-import { Container, Header, Content, List, ListItem, Icon, Left, Body, Right, Title, Text} from 'native-base';
+import { Container, Header, Left, Body, Right, Title} from 'native-base';
 import * as Font from 'expo-font';
 import { Ionicons } from '@expo/vector-icons';
+
+import Layout from './components/layout'
 
 export default class App extends React.Component<{}, {isReady: boolean}> {
   constructor(props) {
     super(props);
     this.state = {
-      isReady: false,
+      isReady: false
+
     };
   }
 
@@ -36,18 +39,7 @@ export default class App extends React.Component<{}, {isReady: boolean}> {
           <Right />
         </Header>
 
-        <Content>
-          <List>
-            <ListItem noIndent style={{ backgroundColor: "#cde1f9" }}>
-              <Left>
-                <Text>Simon Mignolet</Text>
-              </Left>
-              <Right>
-                <Icon name="arrow-forward" />
-              </Right>
-            </ListItem>
-          </List>
-        </Content>
+        <Layout />
 
       </Container>
     );

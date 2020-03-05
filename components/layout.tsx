@@ -1,5 +1,6 @@
 import React from 'react';
-import { Container, Content, Button, Text, Input, Item} from 'native-base';
+import {AsyncStorage} from 'react-native'
+import { Container, Content, Button, Text, Input, Item, Form} from 'native-base';
 import Goals from './goals'
 
 export default class LayOut extends React.Component<{}, {title: string, goals: Array<string>}> {
@@ -12,12 +13,21 @@ export default class LayOut extends React.Component<{}, {title: string, goals: A
 
         this._onPressButton = this._onPressButton.bind(this)
     }
-    _onPressButton(){
-      console.log(this.state.goals)
+    async componentDidMount(){
+      var storedGoals = await AsyncStorage.getItem("goals")
+      if(storedGoals != null){
+          this.setState({
+          goals: JSON.parse(storedGoals)
+        })
+      }
+      return
+    }
+    async _onPressButton(){
       this.setState({
-        goals: [...this.state.goals, this.state.title],
-        title: ''
+        goals: [...this.state.goals, this.state.title]
       })
+     
+          await AsyncStorage.setItem("goals", JSON.stringify(this.state.goals))
     }
   render() {
     return (

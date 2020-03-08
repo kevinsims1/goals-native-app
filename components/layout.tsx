@@ -26,8 +26,11 @@ export default class LayOut extends React.Component<{}, {title: string, goals: A
       this.setState({
         goals: [...this.state.goals, this.state.title]
       })
-     
-          await AsyncStorage.setItem("goals", JSON.stringify(this.state.goals))
+      await AsyncStorage.setItem("goals", JSON.stringify(this.state.goals))
+      this.setState({
+        title: ""
+      })
+          
     }
   render() {
     return (

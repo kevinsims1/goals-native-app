@@ -1,11 +1,9 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import App from './App';
+import {componentDidMount} from './App';
 
-describe('<App />', () => {
-  it('has 6 child', () => {
-    const tree = renderer.create(<App />).toJSON();
-    expect(tree.children.length).toBe(6);
-  });
+test('<App />, component did mount', async() => {
+    const data = await componentDidMount()
+  expect(data).toBe(true);
 });

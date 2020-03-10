@@ -6,7 +6,7 @@ import { Ionicons } from '@expo/vector-icons';
 
 import Layout from './components/layout'
 
-export default class App extends React.Component<{}, {isReady: boolean}> {
+export default class App extends React.Component{
   constructor(props) {
     super(props);
     this.state = {
